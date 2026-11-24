@@ -814,7 +814,7 @@ export default function TrackerApp() {
         <header className="topbar">
           <div className="topbar-location">
             <span className="mobile-brand">
-              <BusFront size={22} />
+              <BusLogo size={28} />
               BusTrack
             </span>
             <MapPin size={15} />
@@ -1833,7 +1833,7 @@ export default function TrackerApp() {
           {modal === "login" && (
             <div className="modal-body login-modal">
               <span className="login-illustration">
-                <BusFront size={45} />
+                <BusLogo size={52} />
                 <span>
                   <GraduationCap size={24} />
                 </span>
