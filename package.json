@@ -25,6 +25,12 @@
     "@types/react-dom": "^19.2.0",
     "tsx": "^4.21.0"
   },
-  "engines": { "node": "22.x" },
-  "overrides": { "@grpc/grpc-js": "1.14.7", "@firebase/app": "0.16.2", "@firebase/app-compat": "0.5.18" }
+  "engines": {
+    "node": "22.x"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "1.14.7",
+    "@firebase/app": "0.16.2",
+    "@firebase/app-compat": "0.5.18"
+  }
 }

@@ -29,12 +29,12 @@ Abre el enlace local que muestra Next.js. Sin variables de entorno se activa una
 
 ## Información de las rutas
 
-| Ruta | Partida | Llegada | Referencias |
-| --- | --- | --- | --- |
-| Norte | 06:00 | 06:50 | 19 |
-| Sur | 06:05 | 06:45 | 15 |
-| Este | 05:50 | 06:50 | 16 |
-| Oeste | 05:50 | 06:55 | 25 |
+| Ruta  | Partida | Llegada | Referencias |
+| ----- | ------- | ------- | ----------- |
+| Norte | 06:00   | 06:50   | 19          |
+| Sur   | 06:05   | 06:45   | 15          |
+| Este  | 05:50   | 06:50   | 16          |
+| Oeste | 05:50   | 06:55   | 25          |
 
 Fuente inmediata: las cuatro imágenes entregadas por el autor del proyecto, conservadas en `public/routes/`. No indican fecha de vigencia. Se transcribieron los nombres en su orden original, sin inventar paraderos autorizados ni coordenadas. El término **referencia** incluye avenidas y calles de paso, no implica autorización de embarque.
 
