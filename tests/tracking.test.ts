@@ -26,7 +26,6 @@ test("Las cuatro láminas conservan sus 75 referencias y horarios", () => {
     ],
   );
   for (const route of routes) {
-    assert.equal(route.schematic.length, route.points.length);
     assert.ok(
       route.points.every(
         (point) => point.coordinate === null && !point.boardingVerified,

@@ -1,6 +1,8 @@
 # UCSM BusTrack
 
-PWA de transporte universitario, creada con Next.js, React y TypeScript. Diseñada para celulares Android/iOS y escritorio. Proyecto académico independiente: no es un servicio oficial de la Universidad Católica de Santa María.
+PWA de transporte universitario, creada con Next.js, React y TypeScript.
+
+**Actualización:** la vista principal ahora usa Google Maps y Routes API. La clave está configurada en Vercel; Google indica que falta el prepago de activación. El mapa y la comprobación visual de las rutas quedan pendientes de ese paso. Consulta `docs/google-maps.md`. Diseñada para celulares Android/iOS y escritorio. Proyecto académico independiente: no es un servicio oficial de la Universidad Católica de Santa María.
 
 ## Inicio rápido
 
@@ -11,19 +13,19 @@ npm ci
 npm run dev
 ```
 
-Abre el enlace local que muestra Next.js. Sin variables de entorno se activa una **demostración**: bus en movimiento, ETA y ocupación simulados, cuatro recorridos, favoritos persistentes y centro de avisos. No requiere una cuenta ni permisos de ubicación. La simulación pausa cuando el navegador está sin conexión.
+Abre el enlace local que muestra Next.js. Sin variables de entorno se activa una **demostración**: cuatro recorridos, favoritos persistentes y centro de avisos. El bus animado y el ETA de demostración requieren que Google resuelva una geometría válida. No requiere una cuenta ni permisos de ubicación. La simulación pausa cuando el navegador está sin conexión.
 
 ## Funcionalidades
 
 - Cuatro rutas y 75 referencias transcritas de las láminas del proyecto.
 - Horarios de mañana, búsqueda por ruta o referencia y vista de las imágenes originales.
-- Esquema interactivo con selección, zoom y movimiento simulado; no se presenta como cartografía georreferenciada.
+- Google Maps como vista principal, cálculo por calles con Routes API y movimiento simulado sobre la polilínea devuelta; sin rectas inventadas como alternativa.
 - ETA de demostración por referencia y aforo con controles de prueba.
 - Favoritos y preferencias guardados en el dispositivo; sincronización con Firestore al iniciar sesión.
 - Alertas de proximidad con umbral 3/5/10 minutos y prevención de duplicados por ciclo; pruebas de llegada, retraso y desvío.
 - Acceso Google institucional con Firebase, validación de correo verificado y reglas de acceso.
 - Lectura de telemetría Firebase con rechazo de datos inválidos; GPS vencido después de 60 segundos.
-- Google Maps opcional para la posición GPS real, cargado únicamente al usarlo.
+- Google Maps para demostración y posición GPS real; controles de satélite y capa de tráfico.
 - Manifiesto PWA, iconos e instrucciones de instalación. Página offline con las cuatro láminas almacenadas; **el mapa en vivo necesita internet**.
 - Service worker preparado para notificaciones push de datos FCM.
 
@@ -56,7 +58,7 @@ Las integraciones necesitan servicios externos configurados. No se incluye acces
 
 Repositorio: https://github.com/ChipanaGerman/ucsm-bus-tracker
 
-Importa este repositorio como proyecto **Next.js**, raíz `.` y Node.js 22. Comando de build `npm run build`. La demo se despliega sin variables de entorno. Configura variables reales por separado para Preview y Production; Vercel requiere un nuevo build después de cambiar variables `NEXT_PUBLIC_*`.
+Importa este repositorio como proyecto **Next.js**, raíz `.` y Node.js 22. Comando de build `npm run build`. La consulta de rutas se despliega sin variables. Para el mapa se requiere NEXT*PUBLIC_GOOGLE_MAPS_API_KEY y Google Maps activo. Configura variables reales por separado para Preview y Production; Vercel requiere un nuevo build después de cambiar variables `NEXT_PUBLIC*\*`.
 
 La integración Git crea despliegues para las ramas y publica la rama de producción configurada. La protección de acceso depende de la configuración de tu equipo Vercel.
 

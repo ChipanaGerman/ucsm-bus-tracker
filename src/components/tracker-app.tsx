@@ -37,7 +37,7 @@ import {
   WifiOff,
   X,
 } from "lucide-react";
-import RouteMap from "./route-map";
+import { roadDemoEta, type RoadGeometry } from "@/lib/maps";
 import {
   routeById,
   routes,
@@ -48,7 +48,6 @@ import {
 import {
   arrivalTime,
   crossedThreshold,
-  demoEta,
   demoProgress,
   isFresh,
   occupancyLabel,
@@ -170,7 +169,8 @@ export default function TrackerApp() {
   const [installPrompt, setInstallPrompt] = useState<InstallPrompt | null>(
     null,
   );
-  const [googleView, setGoogleView] = useState(false);
+  const [roadGeometry, setRoadGeometry] = useState<RoadGeometry | null>(null);
+  const [mapStatus, setMapStatus] = useState("Google Maps");
   const previousEta = useRef<number | null>(null);
   const previousProgress = useRef<number>(0);
   const notificationCycle = useRef(new Set<string>());
@@ -183,7 +183,7 @@ export default function TrackerApp() {
     !offline &&
     isFresh(telemetry.updatedAt, now);
   const eta = demo
-    ? demoEta(route, progress!, selected)
+    ? roadDemoEta(route, roadGeometry, progress!, selected)
     : fresh
       ? (telemetry!.etas[point.id] ??
         (telemetry?.targetPointId === point.id ? telemetry.etaMinutes : null))
@@ -458,7 +458,7 @@ export default function TrackerApp() {
     setSelected(r.points.length - 1);
     setTick(0);
     setIncident("normal");
-    setGoogleView(false);
+    setRoadGeometry(null);
     setTelemetry(null);
     setGpsError("");
   };
@@ -524,7 +524,7 @@ export default function TrackerApp() {
     }
     setDemo(false);
     setTick(0);
-    setGoogleView(Boolean(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY));
+    setRoadGeometry(null);
   };
   const push = async () => {
     if (!user) {
@@ -635,7 +635,9 @@ export default function TrackerApp() {
         <p>
           {eta === null
             ? demo
-              ? "El bus ya pasó por esta referencia"
+              ? roadGeometry && roadGeometry.routeId === route.id
+                ? "El bus ya pasó por esta referencia"
+                : "La estimación aparecerá al cargar el recorrido"
               : "Sin estimación disponible para este punto"
             : `Llegada aproximada · ${arrivalTime(eta, now)}`}
         </p>
@@ -705,7 +707,7 @@ export default function TrackerApp() {
   );
 
   return (
-    <div className="app-shell">
+    <div className="app-shell vivid-app">
       <a className="skip-link" href="#main">
         Saltar al contenido
       </a>
@@ -864,6 +866,85 @@ export default function TrackerApp() {
           </div>
         )}
         <main id="main" className="main-content">
+          {tab === "mapa" && (
+            <section className="campus-hero">
+              <div className="hero-copy">
+                <span className="hero-kicker">
+                  <span className="dot" /> HECHO PARA TU VIDA UNIVERSITARIA
+                </span>
+                <h2>
+                  Tu campus.
+                  <br />
+                  <span>A un viaje de ti.</span>
+                </h2>
+                <p>
+                  Cuatro rutas. Menos vueltas.
+                  <br className="hero-mobile-break" /> Más tiempo para lo que
+                  importa.
+                </p>
+                <div className="hero-actions">
+                  <button
+                    onClick={() =>
+                      document
+                        .getElementById("live-map")
+                        ?.scrollIntoView({
+                          behavior: window.matchMedia(
+                            "(prefers-reduced-motion: reduce)",
+                          ).matches
+                            ? "instant"
+                            : "smooth",
+                          block: "center",
+                        })
+                    }
+                  >
+                    Ver mi recorrido <ArrowRight size={17} />
+                  </button>
+                  <span>
+                    <Leaf size={15} />
+                    Nos movemos contigo
+                  </span>
+                </div>
+              </div>
+              <div className="hero-visual" aria-hidden="true">
+                <div className="hero-orbit hero-orbit-one" />
+                <div className="hero-orbit hero-orbit-two" />
+                <span className="hero-destination">
+                  <GraduationCap size={20} />
+                  <span>
+                    Próxima parada<b>UCSM · Umacollo</b>
+                  </span>
+                </span>
+                <div className="hero-road">
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                  <i />
+                </div>
+                <div className="hero-bus">
+                  <div className="hero-bus-front">
+                    <span className="bus-destination">UCSM</span>
+                    <span className="bus-windscreen" />
+                    <span className="bus-headlights" />
+                    <span className="bus-grille" />
+                  </div>
+                  <div className="hero-bus-side">
+                    <span />
+                    <span />
+                    <span />
+                    <span className="bus-door" />
+                    <b>BusTrack</b>
+                    <i className="wheel first" />
+                    <i className="wheel second" />
+                  </div>
+                </div>
+                <span className="hero-float-pill">
+                  <BusFront size={16} />
+                  Tu ruta, más cerca <Sparkles size={13} />
+                </span>
+              </div>
+            </section>
+          )}
           <div className="page-heading">
             <div>
               <div className="eyebrow greeting">
@@ -874,7 +955,7 @@ export default function TrackerApp() {
               <h1>
                 {tab === "mapa" ? (
                   <>
-                    Tu próximo viaje,<span> sin adivinar.</span>
+                    ¿Hacia dónde<span> vamos hoy?</span>
                   </>
                 ) : tab === "rutas" ? (
                   "Cuatro rutas. Un mismo destino."
@@ -888,7 +969,7 @@ export default function TrackerApp() {
               </h1>
               <p>
                 {tab === "mapa"
-                  ? "Encuentra tu ruta y llega a clase con más tranquilidad."
+                  ? "Elige tu recorrido. Nosotros te ayudamos a encontrarlo."
                   : tab === "rutas"
                     ? "Conoce los recorridos y horarios del turno mañana."
                     : tab === "favoritos"
@@ -953,11 +1034,13 @@ export default function TrackerApp() {
                     <div>
                       <h2>
                         <span className="dot" />
-                        {demo ? "Sigue tu recorrido" : "Seguimiento GPS"}
+                        {demo
+                          ? "Tu recorrido en Google Maps"
+                          : "Seguimiento GPS"}
                       </h2>
                       <span>
                         {demo
-                          ? "Movimiento, llegada y aforo de demostración"
+                          ? "Calles reales · Movimiento y aforo de demostración"
                           : fresh
                             ? `Última señal: ${new Date(telemetry!.updatedAt).toLocaleTimeString("es-PE", { timeZone: "America/Lima" })}`
                             : gpsError ||
@@ -980,7 +1063,7 @@ export default function TrackerApp() {
                         {demo
                           ? paused || offline
                             ? "Pausado"
-                            : "Simulación"
+                            : mapStatus
                           : fresh
                             ? "Conectado"
                             : "Sin señal"}
@@ -1019,35 +1102,29 @@ export default function TrackerApp() {
                       {demo ? " · Evento simulado" : " · Aviso de la unidad"}
                     </div>
                   )}
-                  {googleView && !demo ? (
-                    <div className="google-container">
-                      <GoogleTrackingMap telemetry={fresh ? telemetry : null} />
-                    </div>
-                  ) : (
-                    <RouteMap
+                  <div className="google-container" id="live-map">
+                    <GoogleTrackingMap
                       route={route}
                       selected={selected}
-                      progress={demo ? progress : null}
+                      progress={demo && !offline ? progress : null}
+                      telemetry={fresh ? telemetry : null}
                       onSelect={setSelected}
+                      onGeometry={setRoadGeometry}
+                      onStatus={setMapStatus}
                     />
-                  )}
+                  </div>
                   <div className="map-bottom">
                     <span>
                       <Info size={14} />
                       {demo
-                        ? "Telemetría simulada · Referencias de las láminas"
+                        ? "Bus simulado · Trazado Google pendiente de validación UCSM"
                         : fresh
-                          ? "GPS recibido · Sin geometría oficial del recorrido"
+                          ? "GPS recibido · Mapa de Google"
                           : "No se muestra una ubicación sin GPS reciente"}
                     </span>
                     <button onClick={() => setModal("image")}>
                       Ver lámina <ExternalLink size={13} />
                     </button>
-                    {!demo && process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
-                      <button onClick={() => setGoogleView((v) => !v)}>
-                        {googleView ? "Ver esquema" : "Ver Google Maps"}
-                      </button>
-                    )}
                   </div>
                 </section>
                 {journeyPanel}

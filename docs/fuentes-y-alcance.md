@@ -6,7 +6,7 @@ Las imágenes `ruta_norte.jpg`, `ruta_sur.jpg`, `ruta_este.jpg`, `ruta_oeste.jpg
 
 - Identifican cuatro recorridos del **turno mañana**, con secuencia de vías y horas de partida/llegada.
 - No aportan fecha, coordenadas, polígonos de geocercas, ubicación de GPS, identificación de unidades, horarios nocturnos ni autorización específica de puntos de embarque.
-- El esquema interactivo se inspira en esas secuencias. Sus coordenadas SVG son unidades de dibujo: **no son latitud/longitud**. Los nombres de barrios en el fondo son ilustrativos, no una base cartográfica.
+- La primera versión usaba un esquema SVG. Se retiró del seguimiento y del código de rutas. La nueva vista solicita a Google una geometría por calles en el orden de las láminas; la validación visual de los resultados sigue pendiente de activar la facturación.
 - Los ejemplos Centro, Cayma, Sachaca y Zamácola del PDF inicial no se trataron como cuatro rutas oficiales independientes; prevalecen las cuatro láminas suministradas.
 - El campo `boardingVerified` es `false` y `coordinate` es `null` en todas las referencias. Solo deben cambiar con datos verificados.
 
