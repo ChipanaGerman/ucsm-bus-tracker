@@ -250,6 +250,10 @@ button:hover:not(:disabled) {
   top: 10px;
   transform: rotate(-20deg);
 }
+.eco-card > * {
+  position: relative;
+  z-index: 1;
+}
 .eco-icon {
   display: block;
   color: #6b9f74;
