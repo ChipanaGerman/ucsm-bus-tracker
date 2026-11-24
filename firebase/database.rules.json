@@ -1,0 +1,12 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "telemetry": {
+      "$routeId": {
+        ".read": "auth != null && auth.token.email_verified === true && auth.token.email != null && auth.token.email.matches(/.*@ucsm[.]edu[.]pe$/)",
+        ".write": false
+      }
+    }
+  }
+}

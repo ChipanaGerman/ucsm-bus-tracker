@@ -1,0 +1,30 @@
+{
+  "name": "ucsm-bus-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "firebase": "12.19.0",
+    "lucide-react": "1.78.0",
+    "@vis.gl/react-google-maps": "^1.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.21.0"
+  },
+  "engines": { "node": "22.x" },
+  "overrides": { "@grpc/grpc-js": "1.14.7", "@firebase/app": "0.16.2", "@firebase/app-compat": "0.5.18" }
+}
