@@ -5,10 +5,10 @@ import "./vivid.css";
 export const metadata: Metadata = {
   title: "UCSM BusTrack · Tu campus, más cerca",
   description:
-    "Las cuatro rutas UCSM, horarios, favoritos y seguimiento en una sola aplicación. Proyecto universitario con demostración interactiva.",
+    "Las cuatro rutas UCSM, horarios, favoritos y seguimiento en una sola aplicación. Proyecto universitario con recorridos interactivos.",
   applicationName: "UCSM BusTrack",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "BusTrack" },
-  icons: { icon: "/icon.svg", apple: "/icon-192.png" },
+  icons: { icon: "/icon.svg?v=2", apple: "/icon-192.png?v=2" },
 };
 export const viewport: Viewport = {
   width: "device-width",

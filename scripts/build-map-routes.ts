@@ -41,7 +41,7 @@ async function main() {
     const coordinates = resolved
       .map((r) => `${r.coordinate.lng},${r.coordinate.lat}`)
       .join(";");
-    const url = `https://routing.openstreetmap.de/routed-car/route/v1/driving/${coordinates}?overview=full&geometries=geojson&steps=true&continue_straight=false&radiuses=${resolved.map(() => "350").join(";")}`;
+    const url = `https://routing.openstreetmap.de/routed-car/route/v1/driving/${coordinates}?overview=full&geometries=geojson&steps=true&continue_straight=true&radiuses=${resolved.map(() => "80").join(";")}`;
     const response = await fetch(url, {
       headers: {
         "User-Agent":
@@ -57,6 +57,8 @@ async function main() {
       data.waypoints.length !== resolved.length
     )
       throw new Error(`Incomplete route ${route.id}`);
+    if (data.waypoints.some((point) => point.distance > 80))
+      throw new Error(`Street snapping exceeds 80 meters: ${route.id}`);
     const path: Coordinate[] = [],
       ends = [0];
     for (const leg of data.routes[0].legs) {
@@ -98,6 +100,7 @@ async function main() {
           unresolved: references.flatMap((r, i) =>
             !r.coordinate ? [i + 1] : [],
           ),
+          snappingMeters: data.waypoints.map((point) => point.distance),
         },
       }) + "\n",
     );

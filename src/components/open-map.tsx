@@ -75,7 +75,7 @@ export default function OpenTrackingMap({
         style: STYLE,
         center: [-71.546, -16.4],
         zoom: 12.5,
-        maxPitch: 65,
+        maxPitch: 50,
         cooperativeGestures: true,
         attributionControl: { compact: true },
         locale: {
@@ -268,8 +268,7 @@ export default function OpenTrackingMap({
       element = document.createElement("div");
     element.className = "road-bus-marker";
     element.style.setProperty("--bus-color", route.color);
-    element.innerHTML =
-      '<span class="bus-pulse"></span><span class="bus-pin"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="16" rx="3"/><path d="M5 11h14M8 19v2m8-2v2M9 6h6M8 15h1m6 0h1"/></svg></span><span class="bus-pin-label"></span>';
+    element.innerHTML = `<span class="bus-pulse"></span><span class="bus-pin"><svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="8" y="5" width="24" height="29" rx="8" fill="#d9f95f"/><rect x="12" y="9" width="16" height="3" rx="1.5" fill="#074b3d"/><rect x="11.5" y="15" width="17" height="9" rx="2.5" fill="#075c49"/><path d="M20 15v9" stroke="#d9f95f"/><rect x="5" y="16" width="3" height="7" rx="1.5" fill="#d9f95f"/><rect x="32" y="16" width="3" height="7" rx="1.5" fill="#d9f95f"/><circle cx="13.5" cy="28.5" r="2" fill="white"/><circle cx="26.5" cy="28.5" r="2" fill="white"/><rect x="11" y="32" width="5" height="5" rx="2" fill="#d9f95f"/><rect x="24" y="32" width="5" height="5" rx="2" fill="#d9f95f"/></svg></span><span class="bus-pin-label"></span>`;
     wrapper.appendChild(element);
     wrapper.style.display = "none";
     const marker = new Marker({ element: wrapper })
@@ -289,12 +288,12 @@ export default function OpenTrackingMap({
     const marker = bus.current,
       element = marker.getElement();
     element.querySelector(".bus-pin-label")!.textContent =
-      progress === null ? "GPS" : "BUS DEMO";
+      progress === null ? "GPS" : `BUS ${route.code}`;
     element.setAttribute(
       "aria-label",
       progress === null
         ? "Ubicación GPS de la unidad"
-        : "Bus simulado sobre calles",
+        : "Ubicación de referencia del bus, sin conexión GPS",
     );
     if (progress === null) {
       const point: Coordinate | null = telemetry
@@ -345,8 +344,8 @@ export default function OpenTrackingMap({
       ...(next && focus
         ? { center: [focus.lng, focus.lat] as [number, number], zoom: 16 }
         : {}),
-      pitch: next ? 55 : 0,
-      bearing: next ? -18 : 0,
+      pitch: next ? 40 : 0,
+      bearing: 0,
       duration: reducedMotion() ? 0 : 900,
     });
   }

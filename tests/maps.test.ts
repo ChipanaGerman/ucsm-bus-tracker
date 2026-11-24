@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { distanceMeters } from "../src/lib/tracking";
+import { demoProgress } from "../src/lib/tracking";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { routes } from "../src/lib/routes";
@@ -127,4 +128,47 @@ test("Los cuatro trazados publicados son continuos, locales y respetan referenci
   }
   assert.equal(count, 75);
   assert.equal(resolved, 70);
+});
+
+test("Norte y Este conservan las referencias revisadas en el corredor correcto", () => {
+  const north = JSON.parse(
+    readFileSync("public/map-routes/norte.json", "utf8"),
+  ) as RoadGeometry;
+  const east = JSON.parse(
+    readFileSync("public/map-routes/este.json", "utf8"),
+  ) as RoadGeometry;
+  // Regression: the earlier matches sent Norte to Aviación in northern Cayma
+  // and Este to Tupacamaru in Miraflores, creating kilometer-long excursions.
+  const aviation = north.pointPositions[5]!;
+  assert.ok(aviation.lat > -16.356 && aviation.lat < -16.35);
+  assert.ok(aviation.lng > -71.56 && aviation.lng < -71.55);
+  const tupac = east.pointPositions[1]!;
+  assert.ok(tupac.lat > -16.416 && tupac.lat < -16.413);
+  assert.ok(tupac.lng > -71.506 && tupac.lng < -71.502);
+  const references = JSON.parse(readFileSync("data/route-waypoints.json", "utf8"));
+  assert.match(references.routes.este[7].osmName, /Mariscal Castilla/);
+  assert.ok(north.totalMeters < 14000);
+  assert.ok(east.totalMeters < 14000);
+  for (const route of routes) {
+    const value = JSON.parse(
+      readFileSync(`public/map-routes/${route.id}.json`, "utf8"),
+    );
+    assert.ok(
+      value.provenance.snappingMeters.every(
+        (distance: number) => distance <= 80,
+      ),
+    );
+  }
+});
+
+test("La reproducción avanza un minuto de recorrido por un minuto transcurrido", () => {
+  for (const route of routes) {
+    const elapsed = demoProgress(route, 30) - demoProgress(route, 0);
+    assert.ok(Math.abs(elapsed - 1 / route.duration) < 1e-10);
+    assert.ok(
+      Math.abs(
+        demoProgress(route, route.duration * 30) - demoProgress(route, 0),
+      ) < 1e-10,
+    );
+  }
 });

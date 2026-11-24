@@ -1,1 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192"><rect width="192" height="192" rx="48" fill="#087b63"/><g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><rect x="52" y="40" width="88" height="107" rx="20"/><path d="M52 106h88M72 148v10m48-10v10M75 61h42"/><path d="M69 78h54v28H69z"/><path d="M74 126h1m42 0h1"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0c6b55"/><stop offset="1" stop-color="#043b32"/></linearGradient><linearGradient id="body" x2="0" y2="1"><stop stop-color="#e5ff89"/><stop offset="1" stop-color="#c1ee43"/></linearGradient></defs>
+  <rect width="192" height="192" rx="46" fill="url(#bg)"/>
+  <path d="M23 123v16c0 15 12 24 27 24h92c15 0 24-10 24-23" fill="none" stroke="#7fc99b" stroke-width="3" stroke-dasharray="3 8" stroke-linecap="round" opacity=".5"/>
+  <ellipse cx="96" cy="150" rx="43" ry="8" fill="#012c26" opacity=".45"/>
+  <g transform="translate(34 27) scale(3.1)">
+    <rect x="8" y="5" width="24" height="29" rx="8" fill="url(#body)"/>
+    <rect x="12" y="9" width="16" height="3" rx="1.5" fill="#074b3d"/>
+    <rect x="11.5" y="15" width="17" height="9" rx="2.5" fill="#075c49"/>
+    <path d="M12.5 16h14l-5 6h-9z" fill="#2b8263"/>
+    <path d="M20 15v9" stroke="#d2f76a" stroke-width="1"/>
+    <rect x="5" y="16" width="3" height="7" rx="1.5" fill="#c3ec6a"/>
+    <rect x="32" y="16" width="3" height="7" rx="1.5" fill="#c3ec6a"/>
+    <circle cx="13.5" cy="28.5" r="2" fill="#fffdf0"/><circle cx="26.5" cy="28.5" r="2" fill="#fffdf0"/>
+    <rect x="11" y="32" width="5" height="5" rx="2" fill="#c5ed64"/>
+    <rect x="24" y="32" width="5" height="5" rx="2" fill="#c5ed64"/>
+    <rect x="17" y="28" width="6" height="1.5" rx=".7" fill="#196545"/>
+  </g>
+  <circle cx="151" cy="44" r="14" fill="#fff"/><circle cx="151" cy="44" r="6" fill="#11a67f"/>
+</svg>

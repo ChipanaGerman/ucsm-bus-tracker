@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { BusLogo } from "./bus-logo";
 import { onAuthStateChanged, getAuth, signOut, type User } from "firebase/auth";
 import {
   ArrowDownToLine,
@@ -73,6 +74,14 @@ const OpenTrackingMap = dynamic(() => import("./open-map"), {
   ssr: false,
   loading: () => <div className="empty-state">Cargando el mapa…</div>,
 });
+function notificationCopy(text: string): string {
+  return text
+    .replace(/demostración/gi, "referencia")
+    .replace(/simulación/gi, "vista de referencia")
+    .replace(/simulado/gi, "de referencia")
+    .replace(/simulada/gi, "de referencia");
+}
+
 type Tab = "mapa" | "rutas" | "favoritos" | "alertas" | "perfil";
 type Alert = {
   id: string;
@@ -424,9 +433,9 @@ export default function TrackerApp() {
       notificationCycle.current.add("proximity");
       addAlert(
         "Tu bus está cerca",
-        `${route.name} está a ${threshold} minutos de ${point.name}. Aviso de demostración.`,
+        `${route.name} está a ${threshold} minutos de ${point.name}. Aviso local de referencia.`,
       );
-      notify(`Aviso de demostración: tu bus está a ${threshold} minutos.`);
+      notify(`Aviso local: tu bus está a ${threshold} minutos.`);
     }
     if (
       crossedThreshold(previousEta.current, eta, 0) &&
@@ -435,7 +444,7 @@ export default function TrackerApp() {
       notificationCycle.current.add("arrival");
       addAlert(
         "El bus llegó a tu referencia",
-        `${route.name} llegó a ${point.name} en la simulación.`,
+        `${route.name} llegó a ${point.name} en la vista de referencia.`,
       );
     }
     previousEta.current = eta;
@@ -550,18 +559,18 @@ export default function TrackerApp() {
     if (type === "proximity")
       addAlert(
         `Tu bus está a ${threshold} minutos`,
-        `${route.name} se aproxima a ${point.name}. Prueba de demostración.`,
+        `${route.name} se aproxima a ${point.name}. Vista previa del aviso.`,
       );
     else if (type === "arrival")
       addAlert(
         "El bus llegó",
-        `${route.name} llegó a ${point.name}. Prueba de demostración.`,
+        `${route.name} llegó a ${point.name}. Vista previa del aviso.`,
       );
     else {
       setIncident(type);
       addAlert(
         type === "delay" ? "Retraso en el recorrido" : "Desvío temporal",
-        `${route.name}: ${type === "delay" ? "demora simulada por tráfico" : "desvío simulado"}.`,
+        `${route.name}: ${type === "delay" ? "retraso de referencia" : "desvío de referencia"}.`,
       );
     }
     notify("Alerta de prueba creada. Revísala en Notificaciones.");
@@ -621,7 +630,7 @@ export default function TrackerApp() {
           <span>
             <span className={`dot ${!demo && !fresh ? "grey" : ""}`} />
             {demo
-              ? "Llegada simulada"
+              ? "Tiempo orientativo"
               : fresh
                 ? "Estimación GPS"
                 : "Esperando GPS"}
@@ -647,7 +656,7 @@ export default function TrackerApp() {
         <div className="occupancy">
           <span>
             <Users size={16} />
-            Aforo {demo ? "simulado" : "reportado"}
+            Aforo {demo ? "de referencia" : "reportado"}
           </span>
           <b className={`aforo ${aforo.toLowerCase().replace(" ", "-")}`}>
             {aforo}
@@ -676,7 +685,7 @@ export default function TrackerApp() {
           notify(
             alertsEnabled
               ? "Avisos de proximidad desactivados."
-              : `Te avisaremos a ${threshold} minutos ${demo ? "en la demostración" : "si activaste push"}.`,
+              : `Te avisaremos a ${threshold} minutos ${demo ? "en la vista de referencia" : "si activaste push"}.`,
           );
         }}
       >
@@ -716,7 +725,7 @@ export default function TrackerApp() {
       <aside className="sidebar">
         <a href="/" className="brand" aria-label="UCSM BusTrack inicio">
           <span className="brand-icon">
-            <BusFront size={26} />
+            <BusLogo size={34} />
           </span>
           <span>
             BusTrack
@@ -793,7 +802,7 @@ export default function TrackerApp() {
             <span>
               <b>{user?.displayName?.split(" ")[0] || "Estudiante"}</b>
               <small>
-                {user ? "Cuenta institucional" : "Explorando la demo"}
+                {user ? "Cuenta institucional" : "Mi espacio de viaje"}
               </small>
             </span>
             <Settings2 size={17} />
@@ -847,24 +856,24 @@ export default function TrackerApp() {
           <span>
             <span className="demo-badge">
               {demo ? <Sparkles size={12} /> : <Radio size={12} />}
-              {demo ? "DEMO" : "GPS REAL"}
+              {demo ? "RECORRIDOS" : "GPS REAL"}
             </span>
             {demo
-              ? "Explora las rutas reales con un bus simulado."
+              ? "Posición de referencia · Sin conexión GPS."
               : "Seguimiento de unidades conectadas a Firebase."}
           </span>
           <button
             onClick={() => (demo ? setModal("simulation") : setDemo(true))}
           >
-            {demo ? "Controles de simulación" : "Volver a demo"}
+            {demo ? "Ajustes del recorrido" : "Explorar recorridos"}
             <ChevronRight size={14} />
           </button>
         </div>
         {offline && (
           <div className="connection-banner" role="status">
             <WifiOff size={16} />
-            Sin conexión. La simulación está pausada y los datos GPS pueden
-            estar desactualizados.
+            Sin conexión. El recorrido está pausado y los datos GPS pueden estar
+            desactualizados.
           </div>
         )}
         <main id="main" className="main-content">
@@ -1038,7 +1047,7 @@ export default function TrackerApp() {
                       </h2>
                       <span>
                         {demo
-                          ? "Calles reales · Movimiento y aforo de demostración"
+                          ? "Calles de Arequipa · Referencias de tu viaje"
                           : fresh
                             ? `Última señal: ${new Date(telemetry!.updatedAt).toLocaleTimeString("es-PE", { timeZone: "America/Lima" })}`
                             : gpsError ||
@@ -1050,7 +1059,7 @@ export default function TrackerApp() {
                         <button
                           className="icon-button"
                           aria-label={
-                            paused ? "Reanudar simulación" : "Pausar simulación"
+                            paused ? "Reanudar recorrido" : "Pausar recorrido"
                           }
                           onClick={() => setPaused((v) => !v)}
                         >
@@ -1097,7 +1106,7 @@ export default function TrackerApp() {
                       {activeIncident === "delay"
                         ? "Retraso en el recorrido"
                         : "Desvío temporal de ruta"}
-                      {demo ? " · Evento simulado" : " · Aviso de la unidad"}
+                      {demo ? " · Aviso local" : " · Aviso de la unidad"}
                     </div>
                   )}
                   <div className="open-map-container" id="live-map">
@@ -1115,7 +1124,7 @@ export default function TrackerApp() {
                     <span>
                       <Info size={14} />
                       {demo
-                        ? "Bus simulado · Recorrido orientativo, no oficial"
+                        ? "Recorrido orientativo · Referencias de las láminas UCSM"
                         : fresh
                           ? "GPS recibido · OpenFreeMap"
                           : "No se muestra una ubicación sin GPS reciente"}
@@ -1471,7 +1480,7 @@ export default function TrackerApp() {
                   <p>
                     Los avisos de tus viajes aparecerán aquí.
                     <br />
-                    Puedes probar una alerta desde la demostración.
+                    Puedes ver cómo se presenta un aviso en tu dispositivo.
                   </p>
                   <button
                     className="button primary"
@@ -1495,12 +1504,12 @@ export default function TrackerApp() {
                       </span>
                       <div>
                         <div className="alert-title">
-                          <h3>{alert.title}</h3>
+                          <h3>{notificationCopy(alert.title)}</h3>
                           {alert.demo && (
-                            <span className="mini-badge">DEMO</span>
+                            <span className="mini-badge">LOCAL</span>
                           )}
                         </div>
-                        <p>{alert.body}</p>
+                        <p>{notificationCopy(alert.body)}</p>
                         <small>
                           {new Date(alert.time).toLocaleString("es-PE", {
                             timeZone: "America/Lima",
@@ -1541,9 +1550,9 @@ export default function TrackerApp() {
               <div className="info-box">
                 <Info size={17} />
                 <p>
-                  Los avisos de demostración se guardan en este dispositivo. Las
-                  alertas push reales requieren sesión institucional,
-                  configuración Firebase y telemetría conectada.
+                  Los avisos locales se guardan en este dispositivo. Las alertas
+                  push reales requieren sesión institucional, configuración
+                  Firebase y telemetría conectada.
                 </p>
               </div>
             </section>
@@ -1560,9 +1569,7 @@ export default function TrackerApp() {
                     <h2>{user?.displayName || "Hola, estudiante"}</h2>
                     <p>{user?.email || "Explora BusTrack a tu ritmo"}</p>
                     <span className="mini-badge">
-                      {user
-                        ? "CUENTA INSTITUCIONAL"
-                        : "DEMOSTRACIÓN UNIVERSITARIA"}
+                      {user ? "CUENTA INSTITUCIONAL" : "ESPACIO UNIVERSITARIO"}
                     </span>
                   </div>
                 </div>
@@ -1644,7 +1651,7 @@ export default function TrackerApp() {
                     <b>Modo de seguimiento</b>
                     <p>
                       {demo
-                        ? "Bus de demostración, sin GPS real."
+                        ? "Posición de referencia, sin conexión GPS."
                         : "Datos de una unidad conectada."}
                     </p>
                   </div>
@@ -1652,7 +1659,7 @@ export default function TrackerApp() {
                     className="button outline"
                     onClick={() => (demo ? openLive() : setDemo(true))}
                   >
-                    {demo ? "Usar GPS real" : "Usar demo"}
+                    {demo ? "Conectar GPS" : "Explorar recorridos"}
                   </button>
                 </div>
                 <button
@@ -1748,7 +1755,7 @@ export default function TrackerApp() {
                 : modal === "login"
                   ? "Tu campus te espera"
                   : modal === "simulation"
-                    ? "Explora la demostración"
+                    ? "Ajustes de tu recorrido"
                     : modal === "install"
                       ? "Lleva BusTrack contigo"
                       : "Estamos para ayudarte"
@@ -1856,7 +1863,7 @@ export default function TrackerApp() {
                   <Info size={18} />
                   <p>
                     El acceso institucional necesita la configuración de
-                    Firebase. La demostración está disponible sin cuenta.
+                    Firebase. Puedes consultar los recorridos sin cuenta.
                   </p>
                 </div>
               )}
@@ -1867,7 +1874,7 @@ export default function TrackerApp() {
                   setModal(null);
                 }}
               >
-                Explorar demostración <ArrowRight size={16} />
+                Explorar recorridos <ArrowRight size={16} />
               </button>
               <p className="tiny muted">
                 Proyecto universitario independiente. No solicita tu contraseña
@@ -1878,13 +1885,13 @@ export default function TrackerApp() {
           {modal === "simulation" && (
             <div className="modal-body">
               <p>
-                Prueba los estados del transporte para tu exposición. No se
-                envían ubicaciones ni avisos de buses reales.
+                Personaliza la reproducción del recorrido y la vista previa de
+                avisos. Los ajustes solo afectan a esta vista.
               </p>
               <div className="setting-row">
                 <div>
                   <b>Movimiento de la unidad</b>
-                  <p>Un ciclo comprimido para demostración.</p>
+                  <p>Velocidad según la duración del recorrido.</p>
                 </div>
                 <button
                   className="button outline"
@@ -1895,7 +1902,7 @@ export default function TrackerApp() {
                 </button>
               </div>
               <label className="field-label" htmlFor="occupancy-range">
-                Aforo de ejemplo: {occupancy} / 50
+                Aforo de referencia: {occupancy} / 50
               </label>
               <input
                 id="occupancy-range"
@@ -1925,21 +1932,21 @@ export default function TrackerApp() {
                   onClick={() => simulate("delay")}
                 >
                   <Clock3 size={16} />
-                  Simular retraso
+                  Vista previa: retraso
                 </button>
                 <button
                   className="button outline"
                   onClick={() => simulate("diversion")}
                 >
                   <RouteIcon size={16} />
-                  Simular desvío
+                  Vista previa: desvío
                 </button>
               </div>
               {incident !== "normal" && (
                 <div className="info-box">
                   <Info size={17} />
                   <p>
-                    {incident === "delay" ? "Retraso" : "Desvío"} simulado
+                    {incident === "delay" ? "Retraso" : "Desvío"} de referencia
                     activo.
                   </p>
                   <button
@@ -1956,7 +1963,7 @@ export default function TrackerApp() {
                   setTick(0);
                   setIncident("normal");
                   setPaused(false);
-                  notify("Recorrido de demostración reiniciado.");
+                  notify("Recorrido reiniciado.");
                 }}
               >
                 Reiniciar recorrido
@@ -2024,8 +2031,8 @@ export default function TrackerApp() {
                 <summary>¿Cómo encuentro mi bus?</summary>
                 <p>
                   Elige una de las cuatro rutas y una referencia. La tarjeta
-                  indica el tiempo estimado y el aforo. En modo demo, estos
-                  valores son simulados.
+                  muestra estimaciones de referencia mientras no haya una unidad
+                  GPS conectada.
                 </p>
               </details>
               <details>
@@ -2048,9 +2055,9 @@ export default function TrackerApp() {
               <details>
                 <summary>¿Cómo funcionan los avisos?</summary>
                 <p>
-                  Guarda una referencia y selecciona tu anticipación. En la demo
-                  los avisos se generan dentro de la app. Los push reales
-                  necesitan permisos del dispositivo y configuración del
+                  Guarda una referencia y selecciona tu anticipación. Sin GPS,
+                  los avisos son locales y se generan dentro de la app. Los push
+                  reales necesitan permisos del dispositivo y configuración del
                   servidor. No se garantiza una entrega exacta al minuto.
                 </p>
               </details>
@@ -2065,9 +2072,10 @@ export default function TrackerApp() {
               <details>
                 <summary>¿Se guarda mi ubicación?</summary>
                 <p>
-                  La demostración no solicita tu ubicación. Los favoritos y
-                  avisos se guardan en este navegador. Al iniciar sesión, los
-                  favoritos y preferencias se sincronizan con Firebase.
+                  La consulta de recorridos no solicita tu ubicación. Los
+                  favoritos y avisos se guardan en este navegador. Al iniciar
+                  sesión, los favoritos y preferencias se sincronizan con
+                  Firebase.
                 </p>
               </details>
             </div>

@@ -31,3 +31,5 @@ El visitante descarga geometría estática desde Vercel y cartografía desde Ope
 - [OSRM: Route service](https://project-osrm.org/docs/v5.24.0/api/#route-service).
 
 Se mantienen visibles las atribuciones OpenFreeMap, OpenMapTiles, OpenStreetMap y OSRM/FOSSGIS. La ausencia de clave no constituye una garantía de disponibilidad del servicio público.
+
+La [revisión de trazados del 24 de noviembre](revision-trazados.md) documenta las correcciones de calles homónimas, el límite de ajuste a la vía y las ubicaciones todavía pendientes.

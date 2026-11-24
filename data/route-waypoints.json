@@ -37,32 +37,35 @@
       {
         "name": "Jr. Buenos Aires",
         "coordinate": {
-          "lat": -16.3545533,
-          "lng": -71.5514556
+          "lat": -16.3601361,
+          "lng": -71.5508665
         },
-        "osm": "https://www.openstreetmap.org/way/1187667452",
+        "osm": "https://www.openstreetmap.org/way/198680998",
         "status": "approximate",
-        "osmName": "Jirón Buenos Aires"
+        "osmName": "Jirón Buenos Aires",
+        "reviewNote": "Se selecciona el tramo de Buenos Aires entre Honorio Delgado y Túpac Amaru, evitando sobrepasar el siguiente cruce."
       },
       {
         "name": "Jr. Túpac Amaru",
         "coordinate": {
-          "lat": -16.3486816,
-          "lng": -71.5446221
+          "lat": -16.3556265,
+          "lng": -71.5507041
         },
-        "osm": "https://www.openstreetmap.org/way/571063881",
+        "osm": "https://www.openstreetmap.org/way/560738110",
         "status": "approximate",
-        "osmName": "Jirón Túpac Amaru"
+        "osmName": "Calle Túpac Amaru",
+        "reviewNote": "Coincidencia cartográfica Calle Túpac Amaru en el corredor Buenos Aires–Aviación; se descarta el homónimo al noreste."
       },
       {
         "name": "Calle Aviación",
         "coordinate": {
-          "lat": -16.3426605,
-          "lng": -71.5424213
+          "lat": -16.3532789,
+          "lng": -71.5525599
         },
-        "osm": "https://www.openstreetmap.org/way/110826310",
+        "osm": "https://www.openstreetmap.org/way/110838004",
         "status": "approximate",
-        "osmName": "Calle Aviación"
+        "osmName": "Avenida Aviación",
+        "reviewNote": "La lámina distingue Calle/Av. Aviación; este tramo OSM conecta el corredor Túpac Amaru con El Azufral, sin subir a otra calle Aviación de Cayma."
       },
       {
         "name": "Campo de Toros El Azufral",
@@ -173,12 +176,13 @@
       {
         "name": "Calle José Santos Chocano",
         "coordinate": {
-          "lat": -16.4037069,
-          "lng": -71.5493073
+          "lat": -16.4047772,
+          "lng": -71.5467057
         },
-        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "osm": "https://www.openstreetmap.org/way/1275746486",
         "status": "approximate",
-        "osmName": "José Santos Chocano"
+        "osmName": "José Santos Chocano",
+        "reviewNote": "Se usa el tramo próximo a San Jerónimo, en lugar del extremo Samuel Velarde que forzaba volver hacia el oeste."
       },
       {
         "name": "Av. San Jerónimo",
@@ -317,12 +321,13 @@
       {
         "name": "Calle José Santos Chocano",
         "coordinate": {
-          "lat": -16.4037069,
-          "lng": -71.5493073
+          "lat": -16.4047772,
+          "lng": -71.5467057
         },
-        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "osm": "https://www.openstreetmap.org/way/1275746486",
         "status": "approximate",
-        "osmName": "José Santos Chocano"
+        "osmName": "José Santos Chocano",
+        "reviewNote": "Se usa el tramo próximo a San Jerónimo, en lugar del extremo Samuel Velarde que forzaba volver hacia el oeste."
       },
       {
         "name": "Av. San Jerónimo",
@@ -349,32 +354,35 @@
       {
         "name": "Calle Túpac Amaru",
         "coordinate": {
-          "lat": -16.4018819,
-          "lng": -71.5022059
+          "lat": -16.414511,
+          "lng": -71.5044959
         },
-        "osm": "https://www.openstreetmap.org/way/557536860",
+        "osm": "https://www.openstreetmap.org/way/1286619062",
         "status": "approximate",
-        "osmName": "Calle Tupacamaru"
+        "osmName": "Túpac Amaru",
+        "reviewNote": "Se descarta Tupacamaru de Miraflores; se usa el corredor Túpac Amaru que une Jesús con Prolongación Mariscal Castilla."
       },
       {
         "name": "Calle Mariscal Castilla",
         "coordinate": {
-          "lat": -16.4102052,
-          "lng": -71.5050757
+          "lat": -16.4132358,
+          "lng": -71.5006212
         },
-        "osm": "https://www.openstreetmap.org/way/403152326",
+        "osm": "https://www.openstreetmap.org/way/1525663634",
         "status": "approximate",
-        "osmName": "Avenida Mariscal Castilla"
+        "osmName": "Prolongación Avenida Mariscal Castilla",
+        "reviewNote": "Tramo Mariscal Castilla inmediatamente posterior a Túpac Amaru, antes de continuar a Lima."
       },
       {
         "name": "Av. Lima",
         "coordinate": {
-          "lat": -16.3992805,
-          "lng": -71.505051
+          "lat": -16.4045192,
+          "lng": -71.5138107
         },
-        "osm": "https://www.openstreetmap.org/way/423181751",
+        "osm": "https://www.openstreetmap.org/way/1288481276",
         "status": "approximate",
-        "osmName": "Prolongación Avenida Lima"
+        "osmName": "Avenida Lima",
+        "reviewNote": "Tramo de Avenida Lima en el cruce con Mariscal Castilla, antes de Umachiri; evita rebasar Umachiri y retroceder."
       },
       {
         "name": "Plaza Umachiri",
@@ -409,12 +417,13 @@
       {
         "name": "Av. Mariscal Castilla",
         "coordinate": {
-          "lat": -16.402429,
-          "lng": -71.5171728
+          "lat": -16.4009807,
+          "lng": -71.519156
         },
-        "osm": "https://www.openstreetmap.org/way/171693062",
+        "osm": "https://www.openstreetmap.org/way/1275746464",
         "status": "approximate",
-        "osmName": "Avenida Mariscal Castilla"
+        "osmName": "Avenida Mariscal Castilla",
+        "reviewNote": "Se selecciona Mariscal Castilla después del cruce de Teniente Palacios hacia La Paz, sin obligar a regresar hacia el sureste."
       },
       {
         "name": "La Paz",
@@ -479,12 +488,13 @@
       {
         "name": "Calle José Santos Chocano",
         "coordinate": {
-          "lat": -16.4037069,
-          "lng": -71.5493073
+          "lat": -16.4047772,
+          "lng": -71.5467057
         },
-        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "osm": "https://www.openstreetmap.org/way/1275746486",
         "status": "approximate",
-        "osmName": "José Santos Chocano"
+        "osmName": "José Santos Chocano",
+        "reviewNote": "Se usa el tramo próximo a San Jerónimo, en lugar del extremo Samuel Velarde que forzaba volver hacia el oeste."
       },
       {
         "name": "Av. San Jerónimo",
@@ -723,12 +733,13 @@
       {
         "name": "Calle José Santos Chocano",
         "coordinate": {
-          "lat": -16.4037069,
-          "lng": -71.5493073
+          "lat": -16.4047772,
+          "lng": -71.5467057
         },
-        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "osm": "https://www.openstreetmap.org/way/1275746486",
         "status": "approximate",
-        "osmName": "José Santos Chocano"
+        "osmName": "José Santos Chocano",
+        "reviewNote": "Se usa el tramo próximo a San Jerónimo, en lugar del extremo Samuel Velarde que forzaba volver hacia el oeste."
       },
       {
         "name": "Av. San Jerónimo",
@@ -741,5 +752,6 @@
         "osmName": "Avenida San Jerónimo"
       }
     ]
-  }
+  },
+  "reviewedAt": "2026-11-24"
 }

@@ -100,7 +100,7 @@ export function parseTelemetry(
 export function demoProgress(route: BusRoute, tick: number): number {
   return (
     ((route.id === "norte" ? 0.35 : route.id === "sur" ? 0.48 : 0.22) +
-      tick * 0.004) %
+      (tick * 2) / (route.duration * 60)) %
     1
   );
 }

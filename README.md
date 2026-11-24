@@ -2,7 +2,7 @@
 
 PWA de transporte universitario, creada con Next.js, React y TypeScript.
 
-**Mapas libres:** MapLibre GL + OpenFreeMap, sin clave ni prepago. Cuatro trazados orientativos sobre calles de OpenStreetMap, calculados con OSRM y guardados en el repositorio. Vista 2D/3D, marcadores y bus simulado. Consulta `docs/mapas-abiertos.md`. Diseñada para celulares Android/iOS y escritorio. Proyecto académico independiente: no es un servicio oficial de la Universidad Católica de Santa María.
+**Mapas libres:** MapLibre GL + OpenFreeMap, sin clave ni prepago. Cuatro trazados orientativos sobre calles de OpenStreetMap, calculados con OSRM y guardados en el repositorio. Vista 2D/3D, marcadores y bus simulado. Consulta `docs/mapas-abiertos.md` y `docs/revision-trazados.md`. Diseñada para celulares Android/iOS y escritorio. Proyecto académico independiente: no es un servicio oficial de la Universidad Católica de Santa María.
 
 ## Inicio rápido
 
