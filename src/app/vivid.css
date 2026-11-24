@@ -657,23 +657,23 @@
 .vivid-app .modal::backdrop {
   background: #072f2466;
 }
-.google-container {
+.open-map-container {
   position: relative;
   height: 510px;
   min-height: 510px;
   flex: 1;
   background: #eaf0e4;
 }
-.google-street-map {
+.open-street-map {
   position: absolute;
   inset: 0;
   overflow: hidden;
 }
-.google-street-map > div:first-child,
-.google-street-map > div:first-child > div {
+.maplibre-canvas-host {
   height: 100%;
+  width: 100%;
 }
-.google-map-toolbar {
+.open-map-toolbar {
   position: absolute;
   top: 17px;
   left: 17px;
@@ -712,7 +712,7 @@
   border-left: 1px solid #dfe8d8;
   margin-left: 3px;
 }
-.google-map-toolbar > div {
+.open-map-toolbar > div {
   display: grid;
   border: 1px solid #e1e8d9;
   border-radius: 10px;
@@ -721,7 +721,7 @@
   box-shadow: 0 4px 12px #173c2510;
   pointer-events: auto;
 }
-.google-map-toolbar button {
+.open-map-toolbar button {
   width: 34px;
   height: 35px;
   display: grid;
@@ -729,12 +729,12 @@
   color: #62795d;
   border-radius: 6px;
 }
-.google-map-toolbar button[aria-pressed="true"],
-.google-map-toolbar button:hover {
+.open-map-toolbar button[aria-pressed="true"],
+.open-map-toolbar button:hover {
   background: #eaf3df;
   color: #087b63;
 }
-.google-selection-chip {
+.open-selection-chip {
   position: absolute;
   left: 17px;
   bottom: 54px;
@@ -750,14 +750,14 @@
   max-width: calc(100% - 90px);
   pointer-events: none;
 }
-.google-selection-chip > span:nth-child(2) {
+.open-selection-chip > span:nth-child(2) {
   font-size: 11px;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.google-selection-chip small {
+.open-selection-chip small {
   display: block;
   font-size: 7px;
   letter-spacing: 1.2px;
@@ -770,7 +770,7 @@
   padding: 5px 8px;
   font-size: 10px;
 }
-.google-road-point {
+.road-point {
   position: absolute;
   left: 0;
   top: 0;
@@ -785,7 +785,7 @@
   box-shadow: 0 2px 6px #1c402833;
   z-index: 1;
 }
-.google-road-point.selected {
+.road-point.selected {
   width: 32px;
   height: 32px;
   border-width: 3px;
@@ -795,7 +795,7 @@
     0 3px 9px #16492433;
   z-index: 4;
 }
-.google-bus-marker {
+.road-bus-marker {
   position: absolute;
   left: 0;
   top: 0;
@@ -860,7 +860,7 @@
 .spin {
   animation: orbit-turn 1.5s linear infinite;
 }
-.google-route-caption {
+.open-route-caption {
   position: absolute;
   bottom: 27px;
   left: 17px;
@@ -1160,7 +1160,7 @@
   .maps-configuration p {
     font-size: 10px;
   }
-  .google-container {
+  .open-map-container {
     min-height: 500px;
     height: 500px;
   }
@@ -1334,11 +1334,11 @@
     font-size: 9px;
     padding: 10px 3px;
   }
-  .google-container {
+  .open-map-container {
     height: 425px;
     min-height: 425px;
   }
-  .google-map-toolbar {
+  .open-map-toolbar {
     top: 12px;
     left: 12px;
     right: 12px;
@@ -1352,20 +1352,20 @@
     padding-left: 5px;
     margin-left: 0;
   }
-  .google-map-toolbar button {
+  .open-map-toolbar button {
     width: 30px;
     height: 32px;
   }
-  .google-selection-chip {
+  .open-selection-chip {
     left: 12px;
     bottom: 58px;
     padding: 11px 12px;
     max-width: calc(100% - 80px);
   }
-  .google-selection-chip > span:nth-child(2) {
+  .open-selection-chip > span:nth-child(2) {
     font-size: 10px;
   }
-  .google-route-caption {
+  .open-route-caption {
     font-size: 7px;
     bottom: 27px;
     left: 12px;
@@ -1479,5 +1479,121 @@
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* MapLibre positions marker wrappers; button dimensions do not move the anchor. */
+.road-point {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.road-bus-marker {
+  position: relative;
+}
+.open-map-toolbar {
+  right: 58px;
+}
+.open-map-toolbar > div {
+  display: flex;
+}
+.open-map-toolbar button {
+  width: 42px;
+  height: 40px;
+  gap: 2px;
+  font-size: 10px;
+}
+.open-map-toolbar button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.open-map-toolbar .map-route-label {
+  font-size: 13px;
+}
+.map-route-label > span {
+  font-size: 11px;
+}
+.open-route-caption {
+  bottom: 52px;
+  font-size: 11px;
+}
+.open-selection-chip {
+  bottom: 94px;
+}
+.open-selection-chip small {
+  font-size: 9px;
+  letter-spacing: 0.7px;
+}
+.open-selection-chip > span:nth-child(2) {
+  font-size: 13px;
+}
+.routing-attribution {
+  position: absolute;
+  bottom: 29px;
+  left: 10px;
+  padding: 2px 5px;
+  background: #ffffffdc;
+  color: #36543d;
+  font: 10px/1.5 sans-serif;
+  text-decoration: underline;
+}
+.open-street-map .maplibregl-ctrl-top-right {
+  top: 12px;
+  right: 10px;
+}
+.open-street-map .maplibregl-ctrl-group {
+  box-shadow: 0 3px 14px #173c2520;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.open-street-map .maplibregl-ctrl-group button {
+  width: 34px;
+  height: 34px;
+}
+.open-street-map .maplibregl-ctrl-attrib {
+  font-size: 10px;
+}
+.route-map-error {
+  z-index: 5;
+  font-size: 13px;
+  bottom: 135px;
+}
+.route-map-error button {
+  flex-shrink: 0;
+  padding: 6px;
+}
+@media (max-width: 600px) {
+  .open-map-toolbar {
+    left: 10px;
+    right: 56px;
+    gap: 6px;
+  }
+  .open-map-toolbar .map-route-label {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  .map-route-label > span {
+    padding-left: 4px;
+    font-size: 10px;
+  }
+  .open-map-toolbar button {
+    width: 35px;
+  }
+  .open-route-caption {
+    left: 10px;
+    right: 10px;
+    bottom: 56px;
+    font-size: 10px;
+  }
+  .open-selection-chip {
+    left: 10px;
+    bottom: 100px;
+    max-width: calc(100% - 25px);
+    padding: 9px;
+  }
+  .open-selection-chip > span:nth-child(2) {
+    font-size: 12px;
   }
 }

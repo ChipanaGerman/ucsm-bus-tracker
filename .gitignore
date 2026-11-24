@@ -10,3 +10,4 @@ functions/lib/
 playwright-report/
 test-results/
 tmp/
+/public/vendor/

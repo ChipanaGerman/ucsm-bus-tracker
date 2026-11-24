@@ -69,9 +69,9 @@ import {
   type Preferences,
 } from "@/lib/firebase";
 
-const GoogleTrackingMap = dynamic(() => import("./google-map"), {
+const OpenTrackingMap = dynamic(() => import("./open-map"), {
   ssr: false,
-  loading: () => <div className="empty-state">Cargando Google Maps…</div>,
+  loading: () => <div className="empty-state">Cargando el mapa…</div>,
 });
 type Tab = "mapa" | "rutas" | "favoritos" | "alertas" | "perfil";
 type Alert = {
@@ -170,7 +170,7 @@ export default function TrackerApp() {
     null,
   );
   const [roadGeometry, setRoadGeometry] = useState<RoadGeometry | null>(null);
-  const [mapStatus, setMapStatus] = useState("Google Maps");
+  const [mapStatus, setMapStatus] = useState("OpenFreeMap");
   const previousEta = useRef<number | null>(null);
   const previousProgress = useRef<number>(0);
   const notificationCycle = useRef(new Set<string>());
@@ -636,7 +636,9 @@ export default function TrackerApp() {
           {eta === null
             ? demo
               ? roadGeometry && roadGeometry.routeId === route.id
-                ? "El bus ya pasó por esta referencia"
+                ? roadGeometry.pointDistances[selected] === null
+                  ? "Referencia sin ubicación confirmada en el mapa"
+                  : "El bus ya pasó por esta referencia"
                 : "La estimación aparecerá al cargar el recorrido"
               : "Sin estimación disponible para este punto"
             : `Llegada aproximada · ${arrivalTime(eta, now)}`}
@@ -885,16 +887,14 @@ export default function TrackerApp() {
                 <div className="hero-actions">
                   <button
                     onClick={() =>
-                      document
-                        .getElementById("live-map")
-                        ?.scrollIntoView({
-                          behavior: window.matchMedia(
-                            "(prefers-reduced-motion: reduce)",
-                          ).matches
-                            ? "instant"
-                            : "smooth",
-                          block: "center",
-                        })
+                      document.getElementById("live-map")?.scrollIntoView({
+                        behavior: window.matchMedia(
+                          "(prefers-reduced-motion: reduce)",
+                        ).matches
+                          ? "instant"
+                          : "smooth",
+                        block: "center",
+                      })
                     }
                   >
                     Ver mi recorrido <ArrowRight size={17} />
@@ -1034,9 +1034,7 @@ export default function TrackerApp() {
                     <div>
                       <h2>
                         <span className="dot" />
-                        {demo
-                          ? "Tu recorrido en Google Maps"
-                          : "Seguimiento GPS"}
+                        {demo ? "Tu recorrido por Arequipa" : "Seguimiento GPS"}
                       </h2>
                       <span>
                         {demo
@@ -1102,8 +1100,8 @@ export default function TrackerApp() {
                       {demo ? " · Evento simulado" : " · Aviso de la unidad"}
                     </div>
                   )}
-                  <div className="google-container" id="live-map">
-                    <GoogleTrackingMap
+                  <div className="open-map-container" id="live-map">
+                    <OpenTrackingMap
                       route={route}
                       selected={selected}
                       progress={demo && !offline ? progress : null}
@@ -1117,9 +1115,9 @@ export default function TrackerApp() {
                     <span>
                       <Info size={14} />
                       {demo
-                        ? "Bus simulado · Trazado Google pendiente de validación UCSM"
+                        ? "Bus simulado · Recorrido orientativo, no oficial"
                         : fresh
-                          ? "GPS recibido · Mapa de Google"
+                          ? "GPS recibido · OpenFreeMap"
                           : "No se muestra una ubicación sin GPS reciente"}
                     </span>
                     <button onClick={() => setModal("image")}>

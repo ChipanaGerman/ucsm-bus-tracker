@@ -1917,7 +1917,7 @@ h1 span {
   color: #8ba18d;
   margin-top: 12px;
 }
-.google-container {
+.open-map-container {
   position: relative;
   min-height: 422px;
   flex: 1;
@@ -2917,7 +2917,7 @@ h1 span {
   .info-box {
     padding: 13px;
   }
-  .google-container {
+  .open-map-container {
     min-height: 350px;
   }
   .install-art {

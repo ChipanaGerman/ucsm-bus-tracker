@@ -1,104 +1,12 @@
 import type { BusRoute, Coordinate, RouteId } from "./routes";
 import { distanceMeters } from "./tracking";
 
-// Textos para resolver las vías en Arequipa; no certifican puntos de abordaje.
-const localities: Record<RouteId, string[]> = {
-  norte: [
-    "Cayma",
-    "Cayma",
-    "Cayma",
-    "Cerro Colorado",
-    "Cerro Colorado",
-    "Cerro Colorado",
-    "Cerro Colorado",
-    "Cerro Colorado",
-    "Cerro Colorado",
-    "Cerro Colorado",
-    "Yanahuara",
-    "Cayma",
-    "Cayma",
-    "Yanahuara",
-    "Umacollo",
-    "Umacollo",
-    "Umacollo",
-    "Umacollo",
-    "Umacollo",
-  ],
-  sur: [
-    "Paucarpata",
-    "Paucarpata",
-    "José Luis Bustamante y Rivero",
-    "José Luis Bustamante y Rivero",
-    "José Luis Bustamante y Rivero",
-    "José Luis Bustamante y Rivero",
-    "Arequipa",
-    "Arequipa",
-    "Vallecito",
-    "Vallecito",
-    "Vallecito",
-    "Arequipa",
-    "Umacollo",
-    "Umacollo",
-    "Umacollo",
-  ],
-  este: [
-    "Paucarpata",
-    "Mariano Melgar",
-    "Mariano Melgar",
-    "Mariano Melgar",
-    "Mariano Melgar",
-    "Miraflores",
-    "Miraflores",
-    "Miraflores",
-    "Arequipa",
-    "Arequipa",
-    "Arequipa",
-    "Arequipa",
-    "Yanahuara",
-    "Yanahuara",
-    "Umacollo",
-    "Umacollo",
-  ],
-  oeste: [
-    "José Luis Bustamante y Rivero",
-    "Socabaya",
-    "Socabaya",
-    "Hunter",
-    "Hunter",
-    "Hunter",
-    "Hunter",
-    "Hunter",
-    "Hunter",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Sachaca",
-    "Umacollo",
-    "Umacollo",
-    "Umacollo",
-    "Umacollo",
-    "Umacollo",
-  ],
-};
-export function routeAddresses(route: BusRoute): string[] {
-  return route.points.map(
-    (point, index) =>
-      `${point.name.replace(/\s*\([^)]*\)/g, "")}, ${localities[route.id][index]}, Arequipa, Perú`,
-  );
-}
 export type RoadGeometry = {
   routeId: RouteId;
   path: Coordinate[];
   cumulative: number[];
-  pointPositions: Coordinate[];
-  pointDistances: number[];
+  pointPositions: (Coordinate | null)[];
+  pointDistances: (number | null)[];
   totalMeters: number;
 };
 export function inArequipa(point: Coordinate): boolean {
@@ -149,13 +57,28 @@ export function validateRoadGeometry(g: RoadGeometry, count: number): boolean {
   return (
     g.path.length >= 2 &&
     g.path.every(inArequipa) &&
-    g.pointPositions.length === count &&
-    g.pointPositions.every(inArequipa) &&
-    g.pointDistances.length === count &&
-    g.pointDistances.every(
-      (v, i, values) =>
-        Number.isFinite(v) && v >= 0 && (i === 0 || v >= values[i - 1]),
+    g.cumulative.length === g.path.length &&
+    g.cumulative[0] === 0 &&
+    g.cumulative.every(
+      (v, i, a) => Number.isFinite(v) && v >= 0 && (i === 0 || v >= a[i - 1]),
     ) &&
+    Math.abs(g.cumulative.at(-1)! - g.totalMeters) < 1 &&
+    g.pointPositions.length === count &&
+    g.pointPositions.every((p, i) =>
+      p === null
+        ? g.pointDistances[i] === null
+        : g.pointDistances[i] !== null && inArequipa(p),
+    ) &&
+    g.pointDistances.length === count &&
+    g.pointDistances
+      .filter((v): v is number => v !== null)
+      .every(
+        (v, i, values) =>
+          Number.isFinite(v) &&
+          v >= 0 &&
+          v <= g.totalMeters &&
+          (i === 0 || v >= values[i - 1]),
+      ) &&
     g.totalMeters > 100 &&
     g.totalMeters < 100000
   );
@@ -168,7 +91,9 @@ export function roadDemoEta(
 ): number | null {
   if (!geometry || geometry.routeId !== route.id || !geometry.totalMeters)
     return null;
-  const target = geometry.pointDistances[selected] / geometry.totalMeters;
+  const distance = geometry.pointDistances[selected];
+  if (distance === null || distance === undefined) return null;
+  const target = distance / geometry.totalMeters;
   return progress > target + 0.003
     ? null
     : Math.max(0, Math.ceil((target - progress) * route.duration));

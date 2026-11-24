@@ -6,7 +6,7 @@ Las imágenes `ruta_norte.jpg`, `ruta_sur.jpg`, `ruta_este.jpg`, `ruta_oeste.jpg
 
 - Identifican cuatro recorridos del **turno mañana**, con secuencia de vías y horas de partida/llegada.
 - No aportan fecha, coordenadas, polígonos de geocercas, ubicación de GPS, identificación de unidades, horarios nocturnos ni autorización específica de puntos de embarque.
-- La primera versión usaba un esquema SVG. Se retiró del seguimiento y del código de rutas. La nueva vista solicita a Google una geometría por calles en el orden de las láminas; la validación visual de los resultados sigue pendiente de activar la facturación.
+- La primera versión usaba un esquema SVG. Se retiró del seguimiento y del código de rutas. La vista actual usa MapLibre GL + OpenFreeMap y trazados OSRM sobre calles de OSM entre 70 referencias aproximadas. Las cinco restantes no tienen marcador ni ETA. La geometría orientativa necesita validación de UCSM; ver `mapas-abiertos.md`.
 - Los ejemplos Centro, Cayma, Sachaca y Zamácola del PDF inicial no se trataron como cuatro rutas oficiales independientes; prevalecen las cuatro láminas suministradas.
 - El campo `boardingVerified` es `false` y `coordinate` es `null` en todas las referencias. Solo deben cambiar con datos verificados.
 
@@ -25,7 +25,7 @@ Ubicación del bus, velocidad de reproducción, ETA, ocupación y eventos de pru
 
 - Validar las ubicaciones exactas y los puntos autorizados de abordaje con UCSM.
 - Confirmar vigencia de recorridos, calendario de operación y horarios nocturnos.
-- Obtener proyecto Firebase, dominio institucional y configuración Google Maps.
+- Obtener proyecto Firebase, dominio institucional .
 - Integrar equipos GPS y fuente de aforo auténtica.
 - Recoger históricos para calibrar ETA y medir error con viajes reales.
 - Validar push en Android y en PWA instalada de iOS compatible; la entrega depende del navegador, la red y los permisos.

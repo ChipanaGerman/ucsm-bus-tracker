@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "node scripts/copy-map-worker.mjs",
+    "maps:rebuild": "tsx scripts/build-map-routes.ts",
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
@@ -11,19 +13,19 @@
     "check": "npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
-    "next": "16.4.6",
-    "react": "19.3.1",
-    "react-dom": "19.3.1",
     "firebase": "12.19.0",
     "lucide-react": "1.78.0",
-    "@vis.gl/react-google-maps": "^1.7.1"
+    "maplibre-gl": "^6.19.0",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "typescript": "^5.9.3",
     "@types/node": "^22.19.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": "22.x"

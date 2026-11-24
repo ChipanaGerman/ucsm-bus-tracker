@@ -1,0 +1,745 @@
+{
+  "date": "2026-11-24",
+  "source": "OpenStreetMap contributors / ODbL",
+  "note": "Approximate reference locations, not verified boarding stops. Null references are not inferred. Street names may differ from the supplied sheets.",
+  "routes": {
+    "norte": [
+      {
+        "name": "Av. Bolognesi (Cayma)",
+        "coordinate": {
+          "lat": -16.3669272,
+          "lng": -71.544064
+        },
+        "osm": "https://www.openstreetmap.org/way/558923007",
+        "status": "approximate",
+        "osmName": "Avenida Bolognesi"
+      },
+      {
+        "name": "Estadio La Tomilla",
+        "coordinate": {
+          "lat": -16.3641239,
+          "lng": -71.544043
+        },
+        "osm": "https://www.openstreetmap.org/node/11578158729",
+        "status": "approximate",
+        "osmName": "Estadio La Tomilla"
+      },
+      {
+        "name": "Calle Honorio Delgado",
+        "coordinate": {
+          "lat": -16.3637189,
+          "lng": -71.5461167
+        },
+        "osm": "https://www.openstreetmap.org/way/30810117",
+        "status": "approximate",
+        "osmName": "Calle Honorio Delgado"
+      },
+      {
+        "name": "Jr. Buenos Aires",
+        "coordinate": {
+          "lat": -16.3545533,
+          "lng": -71.5514556
+        },
+        "osm": "https://www.openstreetmap.org/way/1187667452",
+        "status": "approximate",
+        "osmName": "Jirón Buenos Aires"
+      },
+      {
+        "name": "Jr. Túpac Amaru",
+        "coordinate": {
+          "lat": -16.3486816,
+          "lng": -71.5446221
+        },
+        "osm": "https://www.openstreetmap.org/way/571063881",
+        "status": "approximate",
+        "osmName": "Jirón Túpac Amaru"
+      },
+      {
+        "name": "Calle Aviación",
+        "coordinate": {
+          "lat": -16.3426605,
+          "lng": -71.5424213
+        },
+        "osm": "https://www.openstreetmap.org/way/110826310",
+        "status": "approximate",
+        "osmName": "Calle Aviación"
+      },
+      {
+        "name": "Campo de Toros El Azufral",
+        "coordinate": {
+          "lat": -16.3522376,
+          "lng": -71.557159
+        },
+        "osm": "https://www.openstreetmap.org/way/1226908963",
+        "status": "approximate",
+        "osmName": "El Azufral"
+      },
+      {
+        "name": "Av. Aeropuerto",
+        "coordinate": {
+          "lat": -16.3503309,
+          "lng": -71.5642769
+        },
+        "osm": "https://www.openstreetmap.org/way/109453582",
+        "status": "approximate",
+        "osmName": "Prolongación Avenida Aeropuerto"
+      },
+      {
+        "name": "Av. Aviación",
+        "coordinate": {
+          "lat": -16.3659832,
+          "lng": -71.5609157
+        },
+        "osm": "https://www.openstreetmap.org/way/399144147",
+        "status": "approximate",
+        "osmName": "Avenida Aviación"
+      },
+      {
+        "name": "Av. Pumacahua",
+        "coordinate": {
+          "lat": -16.3802427,
+          "lng": -71.5568169
+        },
+        "osm": "https://www.openstreetmap.org/way/1293673520",
+        "status": "approximate",
+        "osmName": "Avenida Pumacahua"
+      },
+      {
+        "name": "Av. Ejército",
+        "coordinate": {
+          "lat": -16.3886007,
+          "lng": -71.5506562
+        },
+        "osm": "https://www.openstreetmap.org/way/1286418914",
+        "status": "approximate",
+        "osmName": "Avenida Ejército"
+      },
+      {
+        "name": "Calle Los Arces",
+        "coordinate": {
+          "lat": -16.3905834,
+          "lng": -71.5479372
+        },
+        "osm": "https://www.openstreetmap.org/way/1286587414",
+        "status": "approximate",
+        "osmName": "Calle Los Arces"
+      },
+      {
+        "name": "Av. Trinidad Morán",
+        "coordinate": {
+          "lat": -16.3920362,
+          "lng": -71.5487775
+        },
+        "osm": "https://www.openstreetmap.org/way/1185308083",
+        "status": "approximate",
+        "osmName": "Avenida General José Trinidad Morán"
+      },
+      {
+        "name": "Av. José A. Quiñones",
+        "coordinate": {
+          "lat": -16.3965228,
+          "lng": -71.5477218
+        },
+        "osm": "https://www.openstreetmap.org/way/1288398931",
+        "status": "approximate",
+        "osmName": "Avenida José Abelardo Quiñones"
+      },
+      {
+        "name": "Av. Víctor A. Belaúnde",
+        "coordinate": {
+          "lat": -16.401102,
+          "lng": -71.5506544
+        },
+        "osm": "https://www.openstreetmap.org/way/1286589020",
+        "status": "approximate",
+        "osmName": "Avenida Víctor Andrés Belaúnde"
+      },
+      {
+        "name": "Calle Lazo de los Ríos",
+        "coordinate": {
+          "lat": -16.4029564,
+          "lng": -71.5480725
+        },
+        "osm": "https://www.openstreetmap.org/way/1552193351",
+        "status": "approximate",
+        "osmName": "Lazo de los Ríos"
+      },
+      {
+        "name": "Av. Ricardo Palma",
+        "coordinate": null,
+        "osm": null,
+        "status": "unresolved"
+      },
+      {
+        "name": "Calle José Santos Chocano",
+        "coordinate": {
+          "lat": -16.4037069,
+          "lng": -71.5493073
+        },
+        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "status": "approximate",
+        "osmName": "José Santos Chocano"
+      },
+      {
+        "name": "Av. San Jerónimo",
+        "coordinate": {
+          "lat": -16.4054371,
+          "lng": -71.5468471
+        },
+        "osm": "https://www.openstreetmap.org/way/26282268",
+        "status": "approximate",
+        "osmName": "Avenida San Jerónimo"
+      }
+    ],
+    "sur": [
+      {
+        "name": "Av. J. F. Kennedy",
+        "coordinate": {
+          "lat": -16.4202582,
+          "lng": -71.508719
+        },
+        "osm": "https://www.openstreetmap.org/way/1286604608",
+        "status": "approximate",
+        "osmName": "Avenida John F. Kennedy"
+      },
+      {
+        "name": "Av. Guardia Civil",
+        "coordinate": {
+          "lat": -16.4240164,
+          "lng": -71.5115186
+        },
+        "osm": "https://www.openstreetmap.org/way/525271578",
+        "status": "approximate",
+        "osmName": "Avenida Guardia Civil"
+      },
+      {
+        "name": "Av. Hartley",
+        "coordinate": {
+          "lat": -16.42798,
+          "lng": -71.5203904
+        },
+        "osm": "https://www.openstreetmap.org/way/109454558",
+        "status": "approximate",
+        "osmName": "Avenida Hartley"
+      },
+      {
+        "name": "Av. EE. UU.",
+        "coordinate": {
+          "lat": -16.4299697,
+          "lng": -71.5290096
+        },
+        "osm": "https://www.openstreetmap.org/way/587032589",
+        "status": "approximate",
+        "osmName": "Avenida Estados Unidos"
+      },
+      {
+        "name": "Óvalo Apacheta",
+        "coordinate": {
+          "lat": -16.4304071,
+          "lng": -71.5328506
+        },
+        "osm": "https://www.openstreetmap.org/way/511569549",
+        "status": "approximate",
+        "osmName": "Óvalo Apacheta"
+      },
+      {
+        "name": "Av. Perú",
+        "coordinate": {
+          "lat": -16.4260272,
+          "lng": -71.5330489
+        },
+        "osm": "https://www.openstreetmap.org/way/616222887",
+        "status": "approximate",
+        "osmName": "Avenida Perú"
+      },
+      {
+        "name": "Av. Daniel Alcides Carrión",
+        "coordinate": {
+          "lat": -16.4170561,
+          "lng": -71.5330098
+        },
+        "osm": "https://www.openstreetmap.org/way/370654153",
+        "status": "approximate",
+        "osmName": "Avenida Daniel Alcides Carrión"
+      },
+      {
+        "name": "Av. Salaverry",
+        "coordinate": {
+          "lat": -16.4076884,
+          "lng": -71.5386457
+        },
+        "osm": "https://www.openstreetmap.org/way/1549029608",
+        "status": "approximate",
+        "osmName": "Avenida Salaverry"
+      },
+      {
+        "name": "Calle 28 de Julio",
+        "coordinate": {
+          "lat": -16.4038118,
+          "lng": -71.5393625
+        },
+        "osm": "https://www.openstreetmap.org/way/110808961",
+        "status": "approximate",
+        "osmName": "Calle 28 de Julio"
+      },
+      {
+        "name": "Av. San Martín",
+        "coordinate": {
+          "lat": -16.4043244,
+          "lng": -71.5424846
+        },
+        "osm": "https://www.openstreetmap.org/way/354685069",
+        "status": "approximate",
+        "osmName": "Avenida San Martín"
+      },
+      {
+        "name": "Óvalo Vallecito",
+        "coordinate": null,
+        "osm": null,
+        "status": "unresolved"
+      },
+      {
+        "name": "Puente San Martín",
+        "coordinate": {
+          "lat": -16.4036396,
+          "lng": -71.5452799
+        },
+        "osm": "https://www.openstreetmap.org/way/112873845",
+        "status": "approximate",
+        "osmName": "Avenida San Martín"
+      },
+      {
+        "name": "Av. Ricardo Palma",
+        "coordinate": null,
+        "osm": null,
+        "status": "unresolved"
+      },
+      {
+        "name": "Calle José Santos Chocano",
+        "coordinate": {
+          "lat": -16.4037069,
+          "lng": -71.5493073
+        },
+        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "status": "approximate",
+        "osmName": "José Santos Chocano"
+      },
+      {
+        "name": "Av. San Jerónimo",
+        "coordinate": {
+          "lat": -16.4054371,
+          "lng": -71.5468471
+        },
+        "osm": "https://www.openstreetmap.org/way/26282268",
+        "status": "approximate",
+        "osmName": "Avenida San Jerónimo"
+      }
+    ],
+    "este": [
+      {
+        "name": "Av. Jesús",
+        "coordinate": {
+          "lat": -16.4192327,
+          "lng": -71.5022789
+        },
+        "osm": "https://www.openstreetmap.org/way/428820144",
+        "status": "approximate",
+        "osmName": "Prolongación Avenida Jesús"
+      },
+      {
+        "name": "Calle Túpac Amaru",
+        "coordinate": {
+          "lat": -16.4018819,
+          "lng": -71.5022059
+        },
+        "osm": "https://www.openstreetmap.org/way/557536860",
+        "status": "approximate",
+        "osmName": "Calle Tupacamaru"
+      },
+      {
+        "name": "Calle Mariscal Castilla",
+        "coordinate": {
+          "lat": -16.4102052,
+          "lng": -71.5050757
+        },
+        "osm": "https://www.openstreetmap.org/way/403152326",
+        "status": "approximate",
+        "osmName": "Avenida Mariscal Castilla"
+      },
+      {
+        "name": "Av. Lima",
+        "coordinate": {
+          "lat": -16.3992805,
+          "lng": -71.505051
+        },
+        "osm": "https://www.openstreetmap.org/way/423181751",
+        "status": "approximate",
+        "osmName": "Prolongación Avenida Lima"
+      },
+      {
+        "name": "Plaza Umachiri",
+        "coordinate": {
+          "lat": -16.4005689,
+          "lng": -71.5064918
+        },
+        "osm": "https://www.openstreetmap.org/way/327914138",
+        "status": "approximate",
+        "osmName": "Parque Umachiri"
+      },
+      {
+        "name": "Calle Sepúlveda",
+        "coordinate": {
+          "lat": -16.399772,
+          "lng": -71.510517
+        },
+        "osm": "https://www.openstreetmap.org/way/110843400",
+        "status": "approximate",
+        "osmName": "Avenida Sepúlveda"
+      },
+      {
+        "name": "Calle Palacios",
+        "coordinate": {
+          "lat": -16.4006654,
+          "lng": -71.5176474
+        },
+        "osm": "https://www.openstreetmap.org/way/1288707957",
+        "status": "approximate",
+        "osmName": "Calle Teniente Palacios"
+      },
+      {
+        "name": "Av. Mariscal Castilla",
+        "coordinate": {
+          "lat": -16.402429,
+          "lng": -71.5171728
+        },
+        "osm": "https://www.openstreetmap.org/way/171693062",
+        "status": "approximate",
+        "osmName": "Avenida Mariscal Castilla"
+      },
+      {
+        "name": "La Paz",
+        "coordinate": {
+          "lat": -16.3993902,
+          "lng": -71.5283566
+        },
+        "osm": "https://www.openstreetmap.org/way/1275766895",
+        "status": "approximate",
+        "osmName": "Avenida La Paz"
+      },
+      {
+        "name": "Don Bosco",
+        "coordinate": {
+          "lat": -16.3964522,
+          "lng": -71.5282708
+        },
+        "osm": "https://www.openstreetmap.org/way/1275766896",
+        "status": "approximate",
+        "osmName": "Calle Don Bosco"
+      },
+      {
+        "name": "Ayacucho",
+        "coordinate": {
+          "lat": -16.3950766,
+          "lng": -71.5323181
+        },
+        "osm": "https://www.openstreetmap.org/way/1539620120",
+        "status": "approximate",
+        "osmName": "Calle Ayacucho"
+      },
+      {
+        "name": "Pte. Grau",
+        "coordinate": {
+          "lat": -16.3932592,
+          "lng": -71.5376215
+        },
+        "osm": "https://www.openstreetmap.org/way/200013500",
+        "status": "approximate",
+        "osmName": "Calle Puente Grau"
+      },
+      {
+        "name": "Av. Ejército",
+        "coordinate": {
+          "lat": -16.3919932,
+          "lng": -71.5413669
+        },
+        "osm": "https://www.openstreetmap.org/way/1275746482",
+        "status": "approximate",
+        "osmName": "Avenida Ejército"
+      },
+      {
+        "name": "Av. Emmel",
+        "coordinate": {
+          "lat": -16.4000791,
+          "lng": -71.5464215
+        },
+        "osm": "https://www.openstreetmap.org/way/27640077",
+        "status": "approximate",
+        "osmName": "Avenida Emmel"
+      },
+      {
+        "name": "Calle José Santos Chocano",
+        "coordinate": {
+          "lat": -16.4037069,
+          "lng": -71.5493073
+        },
+        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "status": "approximate",
+        "osmName": "José Santos Chocano"
+      },
+      {
+        "name": "Av. San Jerónimo",
+        "coordinate": {
+          "lat": -16.4054371,
+          "lng": -71.5468471
+        },
+        "osm": "https://www.openstreetmap.org/way/26282268",
+        "status": "approximate",
+        "osmName": "Avenida San Jerónimo"
+      }
+    ],
+    "oeste": [
+      {
+        "name": "Óvalo Apacheta",
+        "coordinate": {
+          "lat": -16.4304071,
+          "lng": -71.5328506
+        },
+        "osm": "https://www.openstreetmap.org/way/511569549",
+        "status": "approximate",
+        "osmName": "Óvalo Apacheta"
+      },
+      {
+        "name": "Av. Socabaya",
+        "coordinate": {
+          "lat": -16.4413862,
+          "lng": -71.529147
+        },
+        "osm": "https://www.openstreetmap.org/way/1288472147",
+        "status": "approximate",
+        "osmName": "Avenida Socabaya"
+      },
+      {
+        "name": "Av. Independencia (Ciudad Mi Trabajo)",
+        "coordinate": {
+          "lat": -16.4492414,
+          "lng": -71.5338585
+        },
+        "osm": "https://www.openstreetmap.org/way/505948907",
+        "status": "approximate",
+        "osmName": "Avenida Independencia"
+      },
+      {
+        "name": "Calle Túpac Amaru",
+        "coordinate": {
+          "lat": -16.4481746,
+          "lng": -71.5367082
+        },
+        "osm": "https://www.openstreetmap.org/way/907681971",
+        "status": "approximate",
+        "osmName": "Calle Túpac Amaru"
+      },
+      {
+        "name": "Av. La Amistad",
+        "coordinate": {
+          "lat": -16.447857,
+          "lng": -71.5369445
+        },
+        "osm": "https://www.openstreetmap.org/way/560388083",
+        "status": "approximate",
+        "osmName": "Avenida la Amistad"
+      },
+      {
+        "name": "Calle Arica",
+        "coordinate": {
+          "lat": -16.4468531,
+          "lng": -71.5504913
+        },
+        "osm": "https://www.openstreetmap.org/way/110837282",
+        "status": "approximate",
+        "osmName": "Calle Arica"
+      },
+      {
+        "name": "Av. Viña del Mar",
+        "coordinate": {
+          "lat": -16.4441533,
+          "lng": -71.5549322
+        },
+        "osm": "https://www.openstreetmap.org/way/110814131",
+        "status": "approximate",
+        "osmName": "Avenida Viña del Mar"
+      },
+      {
+        "name": "Av. Las Américas (Hunter)",
+        "coordinate": {
+          "lat": -16.4378049,
+          "lng": -71.5613101
+        },
+        "osm": "https://www.openstreetmap.org/way/809386308",
+        "status": "approximate",
+        "osmName": "Avenida Las Américas"
+      },
+      {
+        "name": "Av. Alfonso Ugarte",
+        "coordinate": {
+          "lat": -16.4328556,
+          "lng": -71.562756
+        },
+        "osm": "https://www.openstreetmap.org/way/198354874",
+        "status": "approximate",
+        "osmName": "Avenida Alfonso Ugarte"
+      },
+      {
+        "name": "Puente Tingo",
+        "coordinate": {
+          "lat": -16.4311786,
+          "lng": -71.5659153
+        },
+        "osm": "https://www.openstreetmap.org/way/127055182",
+        "status": "approximate",
+        "osmName": "Avenida Alfonso Ugarte"
+      },
+      {
+        "name": "Av. Fernandini",
+        "coordinate": {
+          "lat": -16.4228457,
+          "lng": -71.5649965
+        },
+        "osm": "https://www.openstreetmap.org/way/1288465285",
+        "status": "approximate",
+        "osmName": "Avenida Fernandini"
+      },
+      {
+        "name": "Callejón de los Mojados",
+        "coordinate": {
+          "lat": -16.415275,
+          "lng": -71.5654375
+        },
+        "osm": "https://www.openstreetmap.org/way/459933938",
+        "status": "approximate",
+        "osmName": "Callejón de los Mojados"
+      },
+      {
+        "name": "Calle Unión",
+        "coordinate": {
+          "lat": -16.4113438,
+          "lng": -71.5677667
+        },
+        "osm": "https://www.openstreetmap.org/way/1185105177",
+        "status": "approximate",
+        "osmName": "Avenida La Unión"
+      },
+      {
+        "name": "Las Magnolias",
+        "coordinate": {
+          "lat": -16.4121807,
+          "lng": -71.5695351
+        },
+        "osm": "https://www.openstreetmap.org/way/110820494",
+        "status": "approximate",
+        "osmName": "Las Magnolias"
+      },
+      {
+        "name": "Las Rosas",
+        "coordinate": null,
+        "osm": null,
+        "status": "unresolved"
+      },
+      {
+        "name": "Av. Brasil",
+        "coordinate": {
+          "lat": -16.4107083,
+          "lng": -71.5703194
+        },
+        "osm": "https://www.openstreetmap.org/way/110841400",
+        "status": "approximate",
+        "osmName": "Avenida Brasil"
+      },
+      {
+        "name": "Calle Taboada",
+        "coordinate": {
+          "lat": -16.4062335,
+          "lng": -71.5632353
+        },
+        "osm": "https://www.openstreetmap.org/way/766068493",
+        "status": "approximate",
+        "osmName": "José Antonio Taboada"
+      },
+      {
+        "name": "Calle Chullo",
+        "coordinate": {
+          "lat": -16.3989635,
+          "lng": -71.5530098
+        },
+        "osm": "https://www.openstreetmap.org/way/110836806",
+        "status": "approximate",
+        "osmName": "Calle Chullo"
+      },
+      {
+        "name": "Calle Las Dalias",
+        "coordinate": {
+          "lat": -16.3986646,
+          "lng": -71.5508221
+        },
+        "osm": "https://www.openstreetmap.org/way/827773649",
+        "status": "approximate",
+        "osmName": "Calle Las Dalias"
+      },
+      {
+        "name": "Los Tulipanes",
+        "coordinate": {
+          "lat": -16.3971691,
+          "lng": -71.5507594
+        },
+        "osm": "https://www.openstreetmap.org/way/110826953",
+        "status": "approximate",
+        "osmName": "Los Tulipanes"
+      },
+      {
+        "name": "Av. Víctor Andrés Belaúnde",
+        "coordinate": {
+          "lat": -16.401102,
+          "lng": -71.5506544
+        },
+        "osm": "https://www.openstreetmap.org/way/1286589020",
+        "status": "approximate",
+        "osmName": "Avenida Víctor Andrés Belaúnde"
+      },
+      {
+        "name": "Calle Lazo de los Ríos",
+        "coordinate": {
+          "lat": -16.4029564,
+          "lng": -71.5480725
+        },
+        "osm": "https://www.openstreetmap.org/way/1552193351",
+        "status": "approximate",
+        "osmName": "Lazo de los Ríos"
+      },
+      {
+        "name": "Av. Ricardo Palma",
+        "coordinate": null,
+        "osm": null,
+        "status": "unresolved"
+      },
+      {
+        "name": "Calle José Santos Chocano",
+        "coordinate": {
+          "lat": -16.4037069,
+          "lng": -71.5493073
+        },
+        "osm": "https://www.openstreetmap.org/way/1552193349",
+        "status": "approximate",
+        "osmName": "José Santos Chocano"
+      },
+      {
+        "name": "Av. San Jerónimo",
+        "coordinate": {
+          "lat": -16.4054371,
+          "lng": -71.5468471
+        },
+        "osm": "https://www.openstreetmap.org/way/26282268",
+        "status": "approximate",
+        "osmName": "Avenida San Jerónimo"
+      }
+    ]
+  }
+}

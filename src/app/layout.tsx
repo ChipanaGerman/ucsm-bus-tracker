@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "maplibre-gl/dist/maplibre-gl.css";
 import "./vivid.css";
 export const metadata: Metadata = {
   title: "UCSM BusTrack · Tu campus, más cerca",
