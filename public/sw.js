@@ -1,4 +1,4 @@
-const CACHE = 'bus-track-shell-v2';
+const CACHE = 'bus-track-shell-v3';
 const STATIC = ['/offline.html', '/icon.svg', '/icon-192.png', '/icon-512.png', '/routes/ruta_norte.jpg', '/routes/ruta_sur.jpg', '/routes/ruta_este.jpg', '/routes/ruta_oeste.jpg'];
 self.addEventListener('install', event => { event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(STATIC))); self.skipWaiting(); });
 self.addEventListener('activate', event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('bus-track-') && key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())); });

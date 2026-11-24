@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { BusLogo } from "./bus-logo";
 import { onAuthStateChanged, getAuth, signOut, type User } from "firebase/auth";
 import {
@@ -923,29 +924,16 @@ export default function TrackerApp() {
                     Próxima parada<b>UCSM · Umacollo</b>
                   </span>
                 </span>
-                <div className="hero-road">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <div className="hero-bus">
-                  <div className="hero-bus-front">
-                    <span className="bus-destination">UCSM</span>
-                    <span className="bus-windscreen" />
-                    <span className="bus-headlights" />
-                    <span className="bus-grille" />
-                  </div>
-                  <div className="hero-bus-side">
-                    <span />
-                    <span />
-                    <span />
-                    <span className="bus-door" />
-                    <b>BusTrack</b>
-                    <i className="wheel first" />
-                    <i className="wheel second" />
-                  </div>
+                <div className="hero-bus-art">
+                  <Image
+                    src="/images/ucsm-bus-hero-v2.webp"
+                    width={1100}
+                    height={550}
+                    sizes="(max-width: 600px) 340px, (max-width: 1050px) 45vw, 500px"
+                    alt=""
+                    preload
+                    className="hero-bus-image"
+                  />
                 </div>
                 <span className="hero-float-pill">
                   <BusFront size={16} />
